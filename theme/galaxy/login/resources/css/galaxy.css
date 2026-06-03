@@ -13,16 +13,25 @@
   src: url('../fonts/atkinson-hyperlegible-700.woff2') format('woff2');
 }
 
-/* Page: dark stage + 24px grid overlay.
-   NOTE: in Keycloak 26.6.2 the `login-pf` class is on <html>, not <body>. */
+/* Full-viewport dark stage + 24px grid.
+   In KC 26.6.2 `login-pf` is on <html> and the stock low-poly image is painted
+   on <body> via `.login-pf body`. We stretch .login-pf-page to the full
+   viewport and give it the dark+grid (it covers the stock image), plus a
+   high-specificity solid-dark fallback on <body> so nothing low-poly peeks. */
 html.login-pf,
 .login-pf-page {
-  background: var(--color-galaxy-dark);
+  background-color: var(--color-galaxy-dark);
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
   font-family: var(--galaxy-font-sans);
+}
+html.login-pf body {
+  background: var(--color-galaxy-dark);
+}
+.login-pf-page {
+  min-height: 100vh;
 }
 
 /* Card: white, rounded, soft shadow */
@@ -80,10 +89,10 @@ html.login-pf,
 .login-pf-page .login-pf-header::before {
   content: "";
   display: block;
-  height: 38px;
+  width: 160px;
+  height: 40px;
   margin: 0 auto 0.85rem;
-  background-image: url('../img/galaxy_logo.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto 38px;
+  /* galaxy_logo.svg has only a viewBox (no intrinsic width/height), so a fixed
+     box + contain is required -- `auto` width collapses the SVG to zero. */
+  background: url('../img/galaxy_logo.svg') center / contain no-repeat;
 }
