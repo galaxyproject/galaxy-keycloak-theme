@@ -70,3 +70,20 @@ html.login-pf,
 .login-pf-page a:hover {
   color: var(--color-galaxy-gold-dark);
 }
+
+/* Logo -- A1: the Galaxy logo sits INSIDE the white card, above the title.
+   In KC 26.6.2 the default realm-name header (#kc-header) renders on the dark
+   stage above the card; hide it, and render the logo inside the card header. */
+#kc-header {
+  display: none;
+}
+.login-pf-page .login-pf-header::before {
+  content: "";
+  display: block;
+  height: 38px;
+  margin: 0 auto 0.85rem;
+  background-image: url('../img/galaxy_logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 38px;
+}
