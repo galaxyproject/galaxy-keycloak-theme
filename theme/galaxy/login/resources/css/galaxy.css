@@ -77,7 +77,10 @@ html.login-pf body {
   color: var(--color-galaxy-primary);
 }
 .login-pf-page a:hover {
-  color: var(--color-galaxy-gold-dark);
+  /* gold-dark (#d19e00) on white is only 2.44:1 -- fails WCAG AA. Darken to
+     galaxy-dark (12.9:1) and underline so the hover affordance stays readable. */
+  color: var(--color-galaxy-dark);
+  text-decoration: underline;
 }
 
 /* Logo -- A1: the Galaxy logo sits INSIDE the white card, above the title.
