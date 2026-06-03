@@ -12,3 +12,61 @@
   font-display: swap;
   src: url('../fonts/atkinson-hyperlegible-700.woff2') format('woff2');
 }
+
+/* Page: dark stage + 24px grid overlay.
+   NOTE: in Keycloak 26.6.2 the `login-pf` class is on <html>, not <body>. */
+html.login-pf,
+.login-pf-page {
+  background: var(--color-galaxy-dark);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--galaxy-font-sans);
+}
+
+/* Card: white, rounded, soft shadow */
+.login-pf-page .card-pf {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+
+/* Typography */
+.login-pf-page .card-pf,
+.login-pf-page label,
+.login-pf-page input {
+  font-family: var(--galaxy-font-sans);
+}
+#kc-page-title,
+.login-pf-page label {
+  color: var(--color-galaxy-dark);
+  font-weight: 700;
+}
+
+/* Primary "Sign In" button: gold bg, dark text */
+.login-pf-page .pf-c-button.pf-m-primary,
+.login-pf-page input#kc-login {
+  background-color: var(--color-galaxy-gold);
+  border-color: var(--color-galaxy-gold);
+  color: var(--color-galaxy-dark);
+  font-weight: 700;
+}
+.login-pf-page .pf-c-button.pf-m-primary:hover,
+.login-pf-page input#kc-login:hover {
+  background-color: var(--color-galaxy-gold-dark);
+  border-color: var(--color-galaxy-gold-dark);
+}
+
+/* Links: Galaxy-blue, gold on hover. "Forgot Password?" is outside
+   #kc-form-options in 26.6.2, so target links broadly within the card. */
+.login-pf-page a,
+#kc-form-options a,
+#kc-registration a,
+#reset-login a {
+  color: var(--color-galaxy-primary);
+}
+.login-pf-page a:hover {
+  color: var(--color-galaxy-gold-dark);
+}
