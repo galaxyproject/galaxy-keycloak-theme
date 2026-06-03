@@ -18,8 +18,9 @@ live and caching disabled.
   "Sign in" to reach the branded login page.
 - Captured outbound emails: `http://localhost:1080` (maildev UI).
 
-> Note: `docker-compose.yml` and the dev realm config are added by a later
-> task. The workflow above describes the intended experience once those land.
+The dev realm (`dev/galaxy-dev-realm.json`) is wired to the `galaxy` login and
+email themes, with a `testuser` (password `password`) and SMTP pointed at
+maildev. `make smoke` runs the same boot and asserts the theme renders.
 
 ---
 
@@ -83,17 +84,20 @@ git push origin v1.0.0
 ## Repository layout
 
 ```
-theme/
-  galaxy/
-    login/
-      resources/
-        css/       # tokens.css, galaxy.css
-        fonts/     # Atkinson Hyperlegible woff2 files
-    email/
-      # email templates
-META-INF/
-  keycloak-themes.json   # declares theme id "galaxy", types login+email
-Makefile
-.github/workflows/
-  release.yml
+theme/galaxy/
+  login/
+    theme.properties           # parent=keycloak, styles list
+    resources/
+      css/    tokens.css, galaxy.css
+      img/    galaxy_logo.svg
+      fonts/  Atkinson Hyperlegible woff2 (400, 700)
+  email/
+    theme.properties           # parent=keycloak
+    html/template.ftl          # branded email wrapper
+META-INF/keycloak-themes.json  # declares theme id "galaxy", types login+email
+Makefile                       # make build / dev / smoke
+docker-compose.yml             # Keycloak 26.6.2 + maildev preview harness
+dev/                           # dev realm, base-theme notes, accessibility notes
+scripts/                       # fetch-fonts.sh, smoke-test.sh
+.github/workflows/             # ci.yml (smoke test), release.yml (jar on tag)
 ```
