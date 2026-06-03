@@ -9,6 +9,19 @@ tested against).
 
 ---
 
+## Screenshots
+
+The `galaxy` theme over Keycloak's standard login flows, plus the branded
+transactional email wrapper -- captured from the `make dev` preview harness.
+
+![Galaxy-branded Keycloak sign-in page](docs/screenshots/login.png)
+
+| Forgot password | Register | Branded reset email |
+| --- | --- | --- |
+| ![Forgot password page](docs/screenshots/forgot-password.png) | ![Registration page](docs/screenshots/register.png) | ![Branded password-reset email](docs/screenshots/email-reset.png) |
+
+---
+
 ## Local preview
 
 `make dev` boots Keycloak and maildev via docker-compose with the theme mounted
@@ -98,6 +111,7 @@ META-INF/keycloak-themes.json  # declares theme id "galaxy", types login+email
 Makefile                       # make build / dev / smoke
 docker-compose.yml             # Keycloak 26.6.2 + maildev preview harness
 dev/                           # dev realm, base-theme notes, accessibility notes
+docs/screenshots/              # README preview images
 scripts/                       # fetch-fonts.sh, smoke-test.sh
 .github/workflows/             # ci.yml (smoke test), release.yml (jar on tag)
 ```
