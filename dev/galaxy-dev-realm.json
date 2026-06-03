@@ -1,0 +1,31 @@
+{
+  "realm": "galaxy-dev",
+  "enabled": true,
+  "displayName": "Galaxy",
+  "loginTheme": "galaxy",
+  "emailTheme": "galaxy",
+  "registrationAllowed": true,
+  "resetPasswordAllowed": true,
+  "smtpServer": {
+    "host": "maildev",
+    "port": "1025",
+    "from": "no-reply@galaxy.test",
+    "fromDisplayName": "Galaxy",
+    "ssl": "false",
+    "starttls": "false",
+    "auth": "false"
+  },
+  "users": [
+    {
+      "username": "testuser",
+      "enabled": true,
+      "email": "testuser@galaxy.test",
+      "emailVerified": true,
+      "firstName": "Test",
+      "lastName": "User",
+      "credentials": [
+        { "type": "password", "value": "password", "temporary": false }
+      ]
+    }
+  ]
+}

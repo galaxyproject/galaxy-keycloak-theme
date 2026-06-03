@@ -1,0 +1,22 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.6.2
+    command:
+      - start-dev
+      - --import-realm
+      - --spi-theme-cache-themes=false
+      - --spi-theme-cache-templates=false
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./theme/galaxy:/opt/keycloak/themes/galaxy:ro
+      - ./dev/galaxy-dev-realm.json:/opt/keycloak/data/import/galaxy-dev-realm.json:ro
+
+  maildev:
+    image: maildev/maildev:2.1.0
+    ports:
+      - "1080:1080"
+      - "1025:1025"
