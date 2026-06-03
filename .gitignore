@@ -1,0 +1,4 @@
+dist/
+node_modules/
+.keycloak-data/
+*.jar
