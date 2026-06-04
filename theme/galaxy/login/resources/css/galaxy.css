@@ -25,7 +25,7 @@ html.login-pf,
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
-  font-family: var(--galaxy-font-sans);
+  font-family: var(--font-sans);
 }
 html.login-pf body {
   background: var(--color-galaxy-dark);
@@ -46,7 +46,7 @@ html.login-pf body {
 .login-pf-page .card-pf,
 .login-pf-page label,
 .login-pf-page input {
-  font-family: var(--galaxy-font-sans);
+  font-family: var(--font-sans);
 }
 #kc-page-title,
 .login-pf-page label {
