@@ -58,6 +58,21 @@ read from `VERSION` at the top of the Makefile.
    (or set `loginTheme`/`emailTheme` in your realm provisioning).
 4. Keep theme caching enabled in production (the default).
 
+## Google signup for federated Galaxy accounts
+
+For a Keycloak client using the link-only Google broker flow, set the client
+attribute `galaxySignupUrl` to the HTTPS URL for Galaxy's own Google signup.
+With the English theme messages, the missing-account page shows this link
+only for clients with the attribute. For example:
+
+```text
+https://test.galaxyproject.org/authnz/google/login?redirect=true&next=https%3A%2F%2Fdev.brc-analytics.org%2Fapi%2Fv1%2Fauth%2Flogin
+```
+
+For an external `next` URL, Galaxy's `allowed_login_redirect_hosts` must include
+the destination host. The destination should start a fresh login for the
+application after Galaxy creates the account.
+
 ---
 
 ## Brand tokens / sync
